@@ -1891,14 +1891,14 @@ void gbWriteSaveMBC3(const char *name, bool extendedSave)
 
 	fwrite(gbRam,
 	       1,
-	       gbRamSize,
+	       (gbRamSizeMask+1),
 	       gzFile);
 
 	if (extendedSave)
 	{
 		fwrite(&gbDataMBC3.mapperSeconds,
 		       1,
-		       10 * sizeof(int32) + sizeof(u32),
+		       10*sizeof(int) + sizeof(time_t),
 		       gzFile);
 	}
 
